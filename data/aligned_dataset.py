@@ -35,8 +35,10 @@ class AlignedDataset(BaseDataset):
         A = A[:, h_offset:h_offset + self.opt.fineSize, w_offset:w_offset + self.opt.fineSize]
         B = B[:, h_offset:h_offset + self.opt.fineSize, w_offset:w_offset + self.opt.fineSize]
 
-        A = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(A)
-        B = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(B)
+        # A = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(A)
+        # B = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(B)
+        A = transforms.Normalize((0.5,), (0.5,))(A)
+        B = transforms.Normalize((0.5,), (0.5,))(B)
 
         if self.opt.direction == 'BtoA':
             input_nc = self.opt.output_nc
